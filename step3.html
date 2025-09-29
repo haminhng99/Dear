@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playwrite+MX+Guides&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <script src="https://aframe.io/releases/1.0.0/aframe.min.js"></script>
+  <script src="https://raw.githack.com/jeromeetienne/AR.js/2.2.2/aframe/build/aframe-ar.min.js"></script>
+
+  <script src="/components.js"></script>
+  <script src="/cursor.js" defer></script>
+
+  <body style="margin: 0px; overflow: hidden">
+    <a-scene embedded arjs>
+      <a-marker preset="hiro" cursor="rayOrigin: mouse;"> </a-marker>
+      <a-entity camera></a-entity>
+    </a-scene>
+
+    <!-- Paper Image centered in the middle of the screen -->
+    <img
+      id="paperImage"
+      src="https://cdn.glitch.global/d05931dc-b566-47cb-a189-db7a0c7310e1/paper-1.svg?v=1743792735960"
+      alt="Paper"
+      style="
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 70vw;
+        height: auto;
+        z-index: 1;
+      "
+    />
+
+    <!-- UI Container with Text Elements -->
+    <div id="ui-container">
+      <a href="step2.html">
+        <button id="back-button">
+          <img
+            src="https://cdn.glitch.global/d05931dc-b566-47cb-a189-db7a0c7310e1/back-button.svg?v=1743734285937"
+            alt="Back"
+          />
+        </button>
+      </a>
+
+      <h1>New Memory</h1>
+      <h2>Step 3: Style your note</h2>
+    </div>
+
+    <!-- Content Wrapper for drawing and uploaded image -->
+    <div id="content-wrapper">
+      <!-- Drawn Text (Step 1) -->
+      <div
+        id="drawingWrapper"
+        style="
+          scale: 60%;
+          position: absolute;
+          top: 52%;
+          left:35%;
+          transform: translate(-50%, -50%);
+          z-index: 3;
+        "
+      >
+        <canvas id="drawingCanvas" style="width: 70vw; height: auto"></canvas>
+      </div>
+
+      <!-- Uploaded Image (Step 2) -->
+      <div
+        id="uploadedImageWrapper"
+        style="
+          position: absolute;
+          top: 43%;
+          left: 53.5%;
+          transform: translate(-50%, -50%);
+          z-index: 2;
+        "
+      >
+        <img
+          id="uploadedImage"
+          src=""
+          alt="Uploaded Image"
+          style="max-width: 90%; height: auto; object-fit: contain; z-index: 2"
+        />
+      </div>
+
+      <!-- Decoration Image overlay (Default nodec.png) -->
+      <img
+        id="decorationImage"
+        src="https://cdn.glitch.global/d05931dc-b566-47cb-a189-db7a0c7310e1/nodec.png?v=1744047077436"
+        alt="Decoration Image"
+        style="
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 70vw;
+          height: auto;
+          z-index: 2;
+        "
+      />
+    </div>
+
+    <!-- Decoration Buttons (No, Red, Blue) -->
+    <div id="decoration-buttons" style="display: flex; justify-content: center; gap: 15px; margin-top: 20px; position: absolute; top: 75%; left: 50%; transform: translateX(-50%); z-index: 5;">
+      <img
+        id="dec-no"
+        src="https://cdn.glitch.global/d05931dc-b566-47cb-a189-db7a0c7310e1/dec-no.svg?v=1744046302184"
+        alt="No Decoration"
+        style="cursor: pointer; width: 50px; height: auto;"
+        onclick="applyDecoration('none')"
+      />
+      <img
+        id="dec-red"
+        src="https://cdn.glitch.global/d05931dc-b566-47cb-a189-db7a0c7310e1/dec-red.svg?v=1744046304121"
+        alt="Red Decoration"
+        style="cursor: pointer; width: 50px; height: auto;"
+        onclick="applyDecoration('red')"
+      />
+      <img
+        id="dec-blue"
+        src="https://cdn.glitch.global/d05931dc-b566-47cb-a189-db7a0c7310e1/dec-blue.svg?v=1744046306743"
+        alt="Blue Decoration"
+        style="cursor: pointer; width: 50px; height: auto;"
+        onclick="applyDecoration('blue')"
+      />
+    </div>
+
+    <!-- Buttons Container -->
+    <div id="button-container">
+      <button id="next-button" style="background-color: #7bd5ff">
+        Upload!
+      </button>
+    </div>
+
+    <script>
+      // Function to apply decoration based on selected image
+      function applyDecoration(decorationType) {
+        const decorationImage = document.getElementById("decorationImage");
+
+        // Hide the decoration image wrapper if no decoration is selected
+        if (decorationType === "none") {
+          decorationImage.src = "https://cdn.glitch.global/d05931dc-b566-47cb-a189-db7a0c7310e1/nodec.png?v=1744047077436"; // Default decoration
+          return;
+        }
+
+        // Set the decoration image based on selected type
+        if (decorationType === "red") {
+          decorationImage.src = "https://cdn.glitch.global/d05931dc-b566-47cb-a189-db7a0c7310e1/red.png?v=1744046473762";
+        } else if (decorationType === "blue") {
+          decorationImage.src = "https://cdn.glitch.global/d05931dc-b566-47cb-a189-db7a0c7310e1/bluepng.png?v=1744046364224";
+        }
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        // Retrieve the uploaded image from Step 2
+        const uploadedImage = localStorage.getItem("uploadedImage");
+
+        if (uploadedImage) {
+          // If there's an uploaded image, display it
+          const imageElement = document.getElementById("uploadedImage");
+          imageElement.src = uploadedImage;
+        }
+
+        // Retrieve the drawing from Step 1
+        const drawingCanvas = document.getElementById("drawingCanvas");
+        const drawingCtx = drawingCanvas.getContext("2d");
+
+        const drawingData = localStorage.getItem("drawingData");
+
+        if (drawingData) {
+          const image = new Image();
+          image.src = drawingData;
+          image.onload = function () {
+            drawingCanvas.width = image.width;
+            drawingCanvas.height = image.height;
+            drawingCtx.drawImage(image, 0, 0);
+          };
+        }
+      });
+    </script>
+  </body>
+</html>

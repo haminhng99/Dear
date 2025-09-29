@@ -1,0 +1,110 @@
+<html>
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playwrite+MX+Guides&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <script src="https://aframe.io/releases/1.0.0/aframe.min.js"></script>
+  <script src="https://raw.githack.com/jeromeetienne/AR.js/2.2.2/aframe/build/aframe-ar.min.js"></script>
+
+  <script src="/components.js"></script>
+  <script src="/cursor.js" defer></script>
+
+  <body style="margin: 0px; overflow: hidden">
+    <!-- AR Scene Setup with AR.js -->
+    <a-scene embedded arjs>
+      <!-- AR Marker -->
+      <a-marker preset="hiro" cursor="rayOrigin: mouse;"> </a-marker>
+      <a-entity camera></a-entity>
+    </a-scene>
+
+    <!-- Paper Image centered in the middle of the screen -->
+    <img
+      id="paperImage"
+      src="https://cdn.glitch.me/d05931dc-b566-47cb-a189-db7a0c7310e1/calendar.svg?v=1744041343478"
+      alt="Paper"
+      style="
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 70vw;
+        height: auto;
+        z-index: 1;
+      "
+    />
+
+    <!-- UI Container (Top) -->
+    <div id="ui-container">
+      <div id="connection">
+        <div class="avatar">
+          <img
+            src="https://cdn.glitch.global/d05931dc-b566-47cb-a189-db7a0c7310e1/avatar-me.svg?v=1743734699538"
+            alt="Your Avatar"
+          />
+          <h2>Me</h2>
+        </div>
+        <div class="streak-bar">
+          <h1>Memory Wall</h1>
+          <img
+            src="https://cdn.glitch.global/d05931dc-b566-47cb-a189-db7a0c7310e1/streak-bar.svg?v=1743735167502"
+            alt="Streak Bar"
+          />
+          <h2>10 days streak!</h2>
+        </div>
+        <div class="avatar">
+          <img
+            src="https://cdn.glitch.global/d05931dc-b566-47cb-a189-db7a0c7310e1/avatar-mom.svg?v=1743734709884"
+            alt="Their Avatar"
+          />
+          <h2>Mom</h2>
+        </div>
+      </div>
+    </div>
+
+    <!-- Calendar Controls: Left Arrow, "March" Button, Right Arrow -->
+    <div id="calendar-container">
+      <img
+        src="https://cdn.glitch.global/d05931dc-b566-47cb-a189-db7a0c7310e1/left-arrow.svg?v=1744042133618"
+        alt="left-arrow"
+      />
+      <button id="march-button">March</button>
+      <img
+        src="https://cdn.glitch.global/d05931dc-b566-47cb-a189-db7a0c7310e1/right-arrow.svg?v=1744042135523"
+        alt="right-arrow"
+      />
+    </div>
+
+    <!-- Buttons Container (Bottom) -->
+    <div id="button-container-row">
+      <a href="index.html">
+        <img
+          src="https://cdn.glitch.global/d05931dc-b566-47cb-a189-db7a0c7310e1/rearrange-button.svg?v=1743734309896"
+          alt="Gallery Wall"
+          class="button-img"
+        />
+      </a>
+      <a href="step1.html">
+        <img
+          src="https://cdn.glitch.global/d05931dc-b566-47cb-a189-db7a0c7310e1/create-button.svg?v=1743734305369"
+          alt="Create Memory"
+          class="button-img"
+        />
+        <h2>Create Memory</h2>
+      </a>
+      <a>
+        <img
+          src="https://cdn.glitch.global/d05931dc-b566-47cb-a189-db7a0c7310e1/swap-view.svg?v=1744043122301"
+          alt="Swap Person"
+          class="button-img"
+        />
+      </a>
+    </div>
+  </body>
+</html>
+

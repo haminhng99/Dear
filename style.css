@@ -1,0 +1,240 @@
+body {
+  font-family: "Roboto Condensed", sans-serif;
+  margin: 0;
+  overflow: hidden;
+}
+
+#ui-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #bcb6ff;
+  color: white;
+  text-align: center;
+  z-index: 10;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+#ui-container h1 {
+  font-family: "Playwrite MX Guides", sans-serif;
+  font-size: 24px;
+  margin: 0;
+}
+
+#ui-container h2 {
+  font-size: 12px;
+  font-weight: 400;
+  margin: 5px;
+}
+
+#connection {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+#button-container-row {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  z-index: 5;
+}
+
+#button-container-row a {
+  text-decoration: none;
+  font-size: 8px;
+  font-weight: 400;
+  margin: 5px;
+  text-align: center;
+  color: white;
+}
+
+/* Button Container for Column Layouts */
+#button-container {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  z-index: 5;
+}
+
+#button-container button,
+#next-button,
+#change-image-button {
+  background-color: #bcb6ff;
+  color: white;
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  border: none;
+  padding: 20px 30px;
+  cursor: pointer;
+  border-radius: 100px;
+  text-align: center;
+  width: 200px; /* Set a fixed width for all buttons */
+  height: 50px; /* Set a fixed height for all buttons */
+  margin: 10px 0; /* Optional: Adds some spacing between buttons */
+  touch-action: manipulation;
+}
+
+
+
+
+/* Drawing canvas */
+#draw-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 4;
+  touch-action: none;
+}
+
+/* Image Upload Section */
+#upload-container {
+  position: fixed;
+  top: 100px; /* Adjust as needed */
+  left: 50%;
+  transform: translateX(-50%); /* Center the container horizontally */
+  width: auto; /* Let the container adjust its width */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 5;
+  gap: 10px;
+}
+
+#upload-label, #change-image-button {
+  background-color: #bcb6ff;
+  color: white;
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  border: none;
+  padding: 20px 30px;
+  cursor: pointer;
+  border-radius: 100px;
+  text-align: center;
+  width: 200px; /* Set fixed width to match other buttons */
+  height: 50px; /* Set fixed height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  touch-action: manipulation;
+  margin-top: 20px; /* Add spacing between the label and other elements */
+}
+
+/* Initially hide the Change Image button */
+#change-image-button {
+  display: none;
+}
+
+#imageUpload {
+  display: none;
+}
+
+#paperImage {
+  position: fixed; /* Change to fixed */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70vw;
+  height: auto;
+  z-index: 1;
+}
+
+/* Center the contents vertically */
+#contents {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full viewport height */
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Center the image preview */
+#uploadedImageWrapper {
+  position: relative;
+  z-index: 1000; /* Ensure it's above other elements */
+  width: 70vw; /* Increase the width for the image wrapper */
+  height: auto; /* Adjust height automatically based on width */
+  top: 70px;  /* Move the wrapper (and the image) down by 20px */
+}
+
+
+#uploadedImage {
+  width: 100%; /* Make the image fill its wrapper */
+  height: auto; /* Maintain aspect ratio */
+  object-fit: contain; /* Ensure the image fits within its container */
+}
+
+/* Style for Back Button */
+#back-button {
+  background: none;
+  border: none;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  cursor: pointer;
+}
+
+#back-button img {
+  width: 40px;
+  height: auto;
+}
+/* Calendar Container */
+#calendar-container {
+  position: fixed;
+  top: 25%; /* Vertically center it */
+  left: 50%; /* Horizontally center it */
+  transform: translate(-50%, -50%); /* Adjust positioning to center the entire container */
+  width: auto;
+  color: white;
+  text-align: center;
+  z-index: 10;
+  display: flex; /* Enable Flexbox */
+  justify-content: center; /* Align items horizontally (arrows and button) */
+  align-items: center; /* Align items vertically */
+  gap: 10px; /* Add some space between the arrows and the button */
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+/* Styling the "March" button to look like the other buttons */
+#march-button {
+  background-color: #bcb6ff;
+  color: white;
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  border: none;
+  padding: 10px 20px; /* Reduce vertical padding to make the button shorter */
+  cursor: pointer;
+  border-radius: 100px;
+  text-align: center;
+  width: 100px; /* Set a fixed width for all buttons */
+  height: auto; /* Let the height adjust based on padding */
+  touch-action: manipulation;
+  margin: 0 10px; /* Add horizontal space */
+}
+

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playwrite+MX+Guides&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <script src="https://aframe.io/releases/1.0.0/aframe.min.js"></script>
+  <script src="https://raw.githack.com/jeromeetienne/AR.js/2.2.2/aframe/build/aframe-ar.min.js"></script>
+
+  <script src="/components.js"></script>
+  <script src="/cursor.js" defer></script>
+
+  <body style="margin: 0px; overflow: hidden">
+    <a-scene embedded arjs>
+      <!-- AR Marker -->
+      <a-marker preset="hiro" cursor="rayOrigin: mouse;">
+        <!-- Removed paper image from here -->
+      </a-marker>
+      <a-entity camera></a-entity>
+    </a-scene>
+
+    <!-- UI Container with Text Elements -->
+    <div id="ui-container">
+      <a href="step1.html">
+        <button id="back-button">
+          <img
+            src="https://cdn.glitch.global/d05931dc-b566-47cb-a189-db7a0c7310e1/back-button.svg?v=1743734285937"
+            alt="Back"
+          />
+        </button>
+      </a>
+
+      <h1>New Memory</h1>
+      <h2>Step 2: Add an Image</h2>
+    </div>
+
+    <!-- Paper Image centered in the middle of the screen -->
+    <img
+      id="paperImage"
+      src="https://cdn.glitch.global/d05931dc-b566-47cb-a189-db7a0c7310e1/paper-1.svg?v=1743792735960"
+      alt="Paper"
+    />
+
+    <div id="contents">
+      <!-- Image Upload Section -->
+      <div id="upload-container">
+        <!-- Display the uploaded image -->
+        <div id="uploadedImageWrapper">
+          <img
+            id="uploadedImage"
+            style="max-width: 100%; display: none; object-fit: contain"
+            alt="Uploaded Image"
+          />
+        </div>
+
+        <!-- Button to change the image -->
+      </div>
+
+      <!-- Buttons Container -->
+      <div id="button-container">
+        <button for="imageUpload" id="upload-label">Upload your image</button>
+        <input type="file" id="imageUpload" accept="image/*" />
+        <button id="change-image-button" style="display: none">
+          Change Image
+        </button>
+
+        <a href="step3.html">
+          <button id="next-button" style="background-color: #7bd5ff">
+            Next: Style Your Note
+          </button>
+        </a>
+      </div>
+    </div>
+  </body>
+</html>

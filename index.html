@@ -1,0 +1,173 @@
+<html>
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playwrite+MX+Guides&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <script src="https://aframe.io/releases/1.0.0/aframe.min.js"></script>
+  <script src="https://raw.githack.com/jeromeetienne/AR.js/2.2.2/aframe/build/aframe-ar.min.js"></script>
+
+  <script src="/components.js"></script>
+  <script src="/cursor.js" defer></script>
+
+  <body style="margin: 0px; overflow: hidden">
+    <!-- AR Scene Setup with AR.js -->
+    <a-scene embedded arjs swipe-to-scroll>
+      <a-marker preset="hiro" cursor="rayOrigin: mouse" raycaster="objects: a-image">
+        <!-- First Image (Position -4) -->
+        <a-image
+          id="image1"
+          src="https://cdn.glitch.global/d27d2c67-1f18-479d-b54f-19fff2fd57d0/mem1.svg?v=1744048194695"
+          position="-3 3 0"
+          scale="1 1.5 1"
+          rotation="-90 0 0"
+          zoom-on-click
+        >
+        </a-image>
+
+        <!-- Second Image (Position -3) -->
+        <a-image
+          id="image2"
+          src="https://cdn.glitch.global/d27d2c67-1f18-479d-b54f-19fff2fd57d0/mem2.svg?v=1744048586519"
+          position="-2 2 0"
+          scale="1 1.5 1"
+          rotation="-90 0 0"
+          zoom-on-click
+        >
+        </a-image>
+
+        <!-- Third Image (Position -2) -->
+        <a-image
+          id="image3"
+          src="https://cdn.glitch.global/d27d2c67-1f18-479d-b54f-19fff2fd57d0/mem3.svg?v=1744048600852"
+          position="-1 1 0"
+          scale="1 1.5 1"
+          rotation="-90 0 0"
+          zoom-on-click
+        >
+        </a-image>
+
+        <!-- Fourth Image (Position -1) -->
+        <a-image
+          id="image4"
+          src="https://cdn.glitch.me/d27d2c67-1f18-479d-b54f-19fff2fd57d0/mem4.svg?v=1744048880466"
+          position="0 0 0"
+          scale="1 1.5 1"
+          rotation="-90 0 0"
+          zoom-on-click
+        >
+        </a-image>
+
+        <!-- Fifth Image (Position 0) -->
+        <a-image
+          id="image5"
+          src="https://cdn.glitch.global/d27d2c67-1f18-479d-b54f-19fff2fd57d0/mem5.svg?v=1744048883611"
+          position="1 1 0"
+          scale="1 1.5 1"
+          rotation="-90 0 0"
+          zoom-on-click
+        >
+        </a-image>
+
+        <!-- Sixth Image (Position 1) -->
+        <a-image
+          id="image6"
+          src="https://cdn.glitch.global/d27d2c67-1f18-479d-b54f-19fff2fd57d0/mem6.svg?v=1744048887393"
+          position="2 2 0"
+          scale="1 1.5 1"
+          rotation="-90 0 0"
+          zoom-on-click
+        >
+        </a-image>
+
+        <!-- Seventh Image (Position 2) -->
+        <a-image
+          id="image7"
+          src="https://cdn.glitch.global/d27d2c67-1f18-479d-b54f-19fff2fd57d0/mem7.svg?v=1744050298399"
+          position="3 3 0"
+          scale="1 1.5 1"
+          rotation="-90 0 0"
+          zoom-on-click
+        >
+        </a-image>
+      </a-marker>
+      <div id="static-image-container" style="display: none">
+        <a-image
+          id="static-image"
+          position="0 0 0"
+          scale="2 2 1"
+          rotation="0 0 0"
+          src=""
+          class="static-image"
+          style="
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+          "
+        >
+        </a-image>
+      </div>
+      <a-entity camera></a-entity>
+    </a-scene>
+
+    <!-- UI Container (Top) -->
+    <div id="ui-container">
+      <div id="connection">
+        <div class="avatar">
+          <img
+            src="https://cdn.glitch.global/d05931dc-b566-47cb-a189-db7a0c7310e1/avatar-me.svg?v=1743734699538"
+            alt="Your Avatar"
+          />
+          <h2>Me</h2>
+        </div>
+        <div class="streak-bar">
+          <h1>Memory Wall</h1>
+          <img
+            src="https://cdn.glitch.global/d05931dc-b566-47cb-a189-db7a0c7310e1/streak-bar.svg?v=1743735167502"
+            alt="Streak Bar"
+          />
+          <h2>10 days streak!</h2>
+        </div>
+        <div class="avatar">
+          <img
+            src="https://cdn.glitch.global/d05931dc-b566-47cb-a189-db7a0c7310e1/avatar-mom.svg?v=1743734709884"
+            alt="Their Avatar"
+          />
+          <h2>Mom</h2>
+        </div>
+      </div>
+    </div>
+
+    <!-- Buttons Container (Bottom) -->
+    <div id="button-container-row">
+      <a href="calendar.html">
+        <img
+          src="https://cdn.glitch.global/d05931dc-b566-47cb-a189-db7a0c7310e1/calendar-button.svg?v=1743734299950"
+          alt="Calendar View"
+          class="button-img"
+        />
+      </a>
+      <a href="step1.html">
+        <img
+          src="https://cdn.glitch.global/d05931dc-b566-47cb-a189-db7a0c7310e1/create-button.svg?v=1743734305369"
+          alt="Create Memory"
+          class="button-img"
+        />
+        <h2>Create Memory</h2>
+      </a>
+      <a>
+        <img
+          src="https://cdn.glitch.global/d05931dc-b566-47cb-a189-db7a0c7310e1/sort-button.svg?v=1744042830871"
+          alt="Sort"
+          class="button-img"
+        />
+      </a>
+    </div>
+  </body>
+</html>

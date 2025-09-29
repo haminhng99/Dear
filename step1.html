@@ -1,0 +1,69 @@
+<html>
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playwrite+MX+Guides&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <script src="https://aframe.io/releases/1.0.0/aframe.min.js"></script>
+  <script src="https://raw.githack.com/jeromeetienne/AR.js/2.2.2/aframe/build/aframe-ar.min.js"></script>
+
+  <script src="/components.js"></script>
+  <script src="/cursor.js" defer></script>
+
+  <body style="margin: 0px; overflow: hidden">
+    <a-scene embedded arjs>
+      <!-- AR Marker -->
+      <a-marker preset="hiro" cursor="rayOrigin: mouse;"> </a-marker>
+      <a-entity camera></a-entity>
+    </a-scene>
+
+    <!-- Paper Image centered in the middle of the screen -->
+    <img
+      id="paperImage"
+      src="https://cdn.glitch.global/d05931dc-b566-47cb-a189-db7a0c7310e1/paper-1.svg?v=1743792735960"
+      alt="Paper"
+      style="
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 70vw;
+        height: auto;
+        z-index: 1;
+      "
+    />
+
+    <!-- UI Header -->
+    <div id="ui-container">
+      <a href="index.html">
+        <button id="back-button">
+          <img
+            src="https://cdn.glitch.global/d05931dc-b566-47cb-a189-db7a0c7310e1/back-button.svg?v=1743734285937"
+            alt="Back"
+          />
+        </button>
+      </a>
+      <h1>New Memory</h1>
+      <h2>Step 1: Write a Note</h2>
+    </div>
+
+    <!-- Button Group -->
+    <div id="button-container">
+      <button id="clear-button">Clear Drawing</button>
+      <a href="step2.html">
+        <button id="next-button" style="background-color: #7bd5ff">
+          Next: Upload an Image
+        </button>
+      </a>
+    </div>
+
+    <!-- Drawing Canvas -->
+    <canvas id="draw-canvas"></canvas>
+    <script src="draw.js"></script>
+  </body>
+</html>
