@@ -1,16 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Step 1 - Write a Note</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Canvas for handwriting -->
+  <!-- AR.js Scene -->
+  <a-scene embedded arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false">
+    <a-marker preset="hiro">
+      <!-- leave empty or add marker content here if needed -->
+    </a-marker>
+    <a-entity camera></a-entity>
+  </a-scene>
+
+  <!-- Canvas overlay for handwriting -->
   <canvas id="draw-canvas"></canvas>
 
-  <!-- Buttons -->
+  <!-- Buttons overlay -->
   <div id="button-container">
     <button id="undo-button">Undo</button>
     <button id="clear-button">Clear Drawing</button>
@@ -43,14 +51,14 @@
     resizeCanvas();
 
     // Stroke data
-    const strokes = [];   // [{points:[{x,y}], lineWidth, color}]
-    const redo = [];      // (optional for later redo feature)
+    const strokes = [];
+    const redo = [];
     let drawing = false;
     let curr = null;
 
     const brush = {
-      color: '#111',          // handwriting color
-      baseWidth: 3.0          // base width
+      color: '#111',
+      baseWidth: 3.0
     };
 
     function pointerPos(e) {
