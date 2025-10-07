@@ -4,6 +4,16 @@ body {
   overflow: hidden;
 }
 
+/* AR.js scene must cover screen */
+a-scene {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0; /* behind everything */
+}
+
 #ui-container {
   position: fixed;
   top: 0;
@@ -70,7 +80,7 @@ body {
   gap: 20px;
   justify-content: center;
   align-items: center;
-  z-index: 5;
+  z-index: 20; /* above canvas */
 }
 
 #button-container button,
@@ -86,33 +96,31 @@ body {
   cursor: pointer;
   border-radius: 100px;
   text-align: center;
-  width: 200px; /* Set a fixed width for all buttons */
-  height: 50px; /* Set a fixed height for all buttons */
-  margin: 10px 0; /* Optional: Adds some spacing between buttons */
+  width: 200px; 
+  height: 50px; 
+  margin: 10px 0; 
   touch-action: manipulation;
 }
 
-
-
-
-/* Drawing canvas */
+/* Drawing canvas overlay */
 #draw-canvas {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  z-index: 4;
+  z-index: 10; /* above AR feed */
   touch-action: none;
+  background: transparent; /* ensure AR video is visible underneath */
 }
 
 /* Image Upload Section */
 #upload-container {
   position: fixed;
-  top: 100px; /* Adjust as needed */
+  top: 100px;
   left: 50%;
-  transform: translateX(-50%); /* Center the container horizontally */
-  width: auto; /* Let the container adjust its width */
+  transform: translateX(-50%);
+  width: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -121,7 +129,8 @@ body {
   gap: 10px;
 }
 
-#upload-label, #change-image-button {
+#upload-label,
+#change-image-button {
   background-color: #bcb6ff;
   color: white;
   font-family: "Roboto Condensed", sans-serif;
@@ -132,13 +141,13 @@ body {
   cursor: pointer;
   border-radius: 100px;
   text-align: center;
-  width: 200px; /* Set fixed width to match other buttons */
-  height: 50px; /* Set fixed height */
+  width: 200px;
+  height: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
   touch-action: manipulation;
-  margin-top: 20px; /* Add spacing between the label and other elements */
+  margin-top: 20px;
 }
 
 /* Initially hide the Change Image button */
@@ -151,7 +160,7 @@ body {
 }
 
 #paperImage {
-  position: fixed; /* Change to fixed */
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -166,7 +175,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh; /* Full viewport height */
+  height: 100vh;
   text-align: center;
   padding: 20px;
   box-sizing: border-box;
@@ -175,17 +184,16 @@ body {
 /* Center the image preview */
 #uploadedImageWrapper {
   position: relative;
-  z-index: 1000; /* Ensure it's above other elements */
-  width: 70vw; /* Increase the width for the image wrapper */
-  height: auto; /* Adjust height automatically based on width */
-  top: 70px;  /* Move the wrapper (and the image) down by 20px */
+  z-index: 1000;
+  width: 70vw;
+  height: auto;
+  top: 70px;
 }
 
-
 #uploadedImage {
-  width: 100%; /* Make the image fill its wrapper */
-  height: auto; /* Maintain aspect ratio */
-  object-fit: contain; /* Ensure the image fits within its container */
+  width: 100%;
+  height: auto;
+  object-fit: contain;
 }
 
 /* Style for Back Button */
@@ -202,25 +210,26 @@ body {
   width: 40px;
   height: auto;
 }
+
 /* Calendar Container */
 #calendar-container {
   position: fixed;
-  top: 25%; /* Vertically center it */
-  left: 50%; /* Horizontally center it */
-  transform: translate(-50%, -50%); /* Adjust positioning to center the entire container */
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: auto;
   color: white;
   text-align: center;
   z-index: 10;
-  display: flex; /* Enable Flexbox */
-  justify-content: center; /* Align items horizontally (arrows and button) */
-  align-items: center; /* Align items vertically */
-  gap: 10px; /* Add some space between the arrows and the button */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
   padding: 10px;
   box-sizing: border-box;
 }
 
-/* Styling the "March" button to look like the other buttons */
+/* Styling the "March" button */
 #march-button {
   background-color: #bcb6ff;
   color: white;
@@ -228,13 +237,12 @@ body {
   font-size: 12px;
   font-weight: 400;
   border: none;
-  padding: 10px 20px; /* Reduce vertical padding to make the button shorter */
+  padding: 10px 20px;
   cursor: pointer;
   border-radius: 100px;
   text-align: center;
-  width: 100px; /* Set a fixed width for all buttons */
-  height: auto; /* Let the height adjust based on padding */
+  width: 100px;
+  height: auto;
   touch-action: manipulation;
-  margin: 0 10px; /* Add horizontal space */
+  margin: 0 10px;
 }
-
